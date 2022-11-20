@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  diagram-repo-template:
+  design-patterns-workshop:
     image: utkusarioglu/plantuml-devcontainer:1.0.4
     volumes:
       - type: bind
