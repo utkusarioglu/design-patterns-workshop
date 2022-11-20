@@ -1,0 +1,25 @@
+@startuml Stack built from SLL
+!include theme.puml
+title Stack built from SLL
+
+interface Stack {
+  - head
+  --
+  + push()
+  + pop()
+  + peek()
+}
+
+interface StackItem {
+  + getData()
+  + getNext()
+}
+
+class SllStack 
+class SllNode 
+
+SllNode -|> StackItem
+SllStack -|> Stack
+Stack -* StackItem
+
+@enduml

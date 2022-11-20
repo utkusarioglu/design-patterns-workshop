@@ -1,0 +1,19 @@
+@startuml Factory Pattern
+!include theme.puml
+title Factory Pattern
+
+interface IFactory {
+  + createChild() : IChild
+}
+interface IChild 
+class Application 
+class Factory
+class Child
+
+Factory .|> IFactory
+Child .|> IChild
+
+Application "1" -* "*" IFactory
+Factory "1" -o "*" Child
+
+@enduml

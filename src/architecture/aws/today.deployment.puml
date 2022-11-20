@@ -1,0 +1,56 @@
+@startuml AWS
+title AWS
+!include theme.puml
+allow_mixing
+left to right direction
+
+cloud Internet
+
+frame AWS {
+  object RouteTable {
+    object InternetRoute 
+  }
+
+  frame Region {
+    object IGW
+
+    frame VPC {
+      object Router
+
+      frame AZ1 {
+        frame Subnet1 <<public>
+        frame Subnet2 <<private>>
+      }
+
+      frame AZ2 {
+        frame Subnet3 <<public>>
+      }
+
+      frame AZ3 {
+        frame Subnet4 <<public>>
+      }
+    }
+  }
+}
+
+VPC -> IGW : provides internet access
+IGW <-> Internet
+Router -> RouteTable : uses
+Router -> AZ1 : connects
+Router -> AZ2 : connects
+Router -> AZ3 : connects
+
+
+note left of InternetRoute 
+Code below means that the route table allows anything coming from anywhere
+to flow into internet gateway
+<code>
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.<your_internet_gateway>.id
+  }
+</code>
+end note
+
+
+@enduml

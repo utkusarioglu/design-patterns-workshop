@@ -1,0 +1,38 @@
+@startuml Builder Pattern Example
+!include theme.puml
+title Builder Pattern Example
+
+
+interface IComponent
+interface IBuilder {
+  + buildComponent() : IComponent
+}
+
+class Builder
+class Application
+class Reader {
+  + setBuilder()
+}
+class Component
+
+Builder .|> IBuilder
+Component .|> IComponent
+
+Application "1" .> "*" Builder : instantiates
+IBuilder "1" -o "*" IComponent : builds
+Reader "*" -> "1" IBuilder : uses for building Component
+Application "1" .> "*" IComponent : consumes
+
+legend
+Builder pattern implies a class that is responsible for creating a complex
+object for some other structure.
+
+Think of a file reader that accepts a reference to parser class. This class
+would be responsible for dealing with the details of parsing the read file.
+
+In the diagram above A would be akin to the reader while B package would be 
+akin to the parser. Parser's internal details would be independent of the
+way that the reader uses the parser.
+end legend
+
+@endum
