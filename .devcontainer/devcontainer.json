@@ -1,14 +1,14 @@
 {
-  "name": "diagram-repo-template.templates.utkusarioglu.com",
+  "name": "design-patterns-workshop.workshops.utkusarioglu.com",
   "dockerComposeFile": [
     "../.docker/docker-compose.dev.yml",
     "docker-compose.yml"
   ],
-  "service": "diagram-repo-template",
+  "service": "design-patterns-workshop",
   "workspaceFolder": "/home/utkusarioglu/dev/workshops/design-patterns-workshop",
   "settings": {
     "workbench.colorCustomizations": {
-      "activityBar.background": "#ff0000",
+      "activityBar.background": "#55af94",
       "activityBar.foreground": "#000000"
     }
   },
